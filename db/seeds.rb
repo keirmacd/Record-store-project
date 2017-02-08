@@ -19,18 +19,21 @@ require_relative ('SqlRunner.rb')
 
 @album1 = Album.new({
   "title" => "Monkeys for nothing, chimps for free", 
-  "genre" => "ska-punk", 
-  "artist_id" => @artist1.id
+  "genre" => "Ska-Punk", 
+  "artist_id" => @artist1.id,
+  "quantity" => 1
 })
 @album2 = Album.new({
   "title" => "Hello Rockview", 
-  "genre" => "ska-punk", 
-  "artist_id" => @artist2.id
+  "genre" => "Ska-Punk", 
+  "artist_id" => @artist2.id,
+  "quantity" => 3
 })
 @album3 = Album.new({
   "title" => "Operation Ivy", 
   "genre" => "Ska", 
-  "artist_id" => @artist3.id
+  "artist_id" => @artist3.id,
+  "quantity" => 0
 })
 
 

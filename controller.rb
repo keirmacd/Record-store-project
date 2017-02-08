@@ -1,16 +1,16 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require( 'pry-byebug' )
-require_relative  "./models/artist.rb"
-require_relative  "./models/album.rb"
+require_relative  ('./models/artist.rb')
+require_relative  ('./models/album.rb')
 
 
 get '/' do
-"you took the red pill"
+  "Hello World"
 end
 
 get "/index" do
   @albums = Album.all()
-  erb :index
+  erb (:index)
 end
 
