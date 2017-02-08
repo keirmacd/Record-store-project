@@ -14,3 +14,7 @@ get "/index" do
   erb (:index)
 end
 
+get "/edit/albums/:id" do
+ @album = Album.find(params[:id].to_i)
+  erb (:edit)
+end

@@ -3,7 +3,7 @@ require_relative ('../db/SqlRunner')
 
 class Album
 
-attr_reader :id, :title, :artist_id, :quantity, :genre
+  attr_reader :id, :title, :artist_id, :quantity, :genre
 
   def initialize(options)
     @id = options['id'].to_i
@@ -15,9 +15,9 @@ attr_reader :id, :title, :artist_id, :quantity, :genre
 
   def save()
     sql = "INSERT 
-      INTO albums (artist_id, title, quantity, genre)
-      VALUES (#{@artist_id}, '#{@title}', #{@quantity}, '#{@genre}') RETURNING *;"
-      
+    INTO albums (artist_id, title, quantity, genre)
+    VALUES (#{@artist_id}, '#{@title}', #{@quantity}, '#{@genre}') RETURNING *;"
+
     @id = SqlRunner.run(sql).first["id"]
   end
 
@@ -26,6 +26,14 @@ attr_reader :id, :title, :artist_id, :quantity, :genre
       FROM albums;")
     SqlRunner.run(sql).map { |album| Album.new(album)  }
   end
+  
+  def self.find(id)
+    sql = ("SELECT * FROM albums WHERE id = #{id}")
+    album = SqlRunner.run(sql).first
+    return Album.new(album)
+  end
+
+
 
   def update()
     sql = "update Album SET (name) = ('#{@name}')WHERE id =#{@id};"
@@ -43,7 +51,7 @@ attr_reader :id, :title, :artist_id, :quantity, :genre
   end
   def artist()
     sql = "SELECT * FROM artists where id = #{@artist_id};"
-  return Artist.new(SqlRunner.run(sql).first)
+    return Artist.new(SqlRunner.run(sql).first)
   end
   def genre()
     return @genre

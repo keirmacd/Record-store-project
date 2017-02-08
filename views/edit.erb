@@ -1,0 +1,13 @@
+<h1>Edit Album</h1>
+
+<form action="/models/album/<%= @album.id %>" method="post">
+ <label>
+ First Name:
+   <input type="text" name="album" value="<%= @album.title() %>" >
+ </label>
+
+ <label>Quantity:
+   <input type="number" name="quantity" value="<%= @album.quantity() %>">
+ </label>
+ <input type='submit' value="Update">
+</form>
